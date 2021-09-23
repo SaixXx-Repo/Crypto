@@ -30,10 +30,10 @@ data class CoinDetailDto(
     @SerializedName("org_structure")
     val orgStructure: String,
     @SerializedName("proof_type")
-    val proofType: String,
+    val proofType: String?,
     val rank: Int,
     @SerializedName("started_at")
-    val startedAt: String,
+    val startedAt: String?,
     val symbol: String,
     val tags: List<Tag>,
     val team: List<Team>,
@@ -44,9 +44,9 @@ data class CoinDetailDto(
 fun CoinDetailDto.toCoinDetail(): CoinDetail{
     return CoinDetail(description = description,
         id = id, name = name,
-        proofType = proofType,
+        proofType = proofType ?: "No Proof Type",
         rank = rank,
-        startedAt = startedAt,
+        startedAt = startedAt ?: "No Start Date",
         symbol = symbol,
         tags = tags.map{it.name},
         team = team
