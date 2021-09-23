@@ -1,5 +1,6 @@
 package com.example.crypto.domain.use_case.get_coin
 
+import android.util.Log
 import com.example.crypto.common.Resource
 import com.example.crypto.data.remote.dto.toCoin
 import com.example.crypto.data.remote.dto.toCoinDetail
@@ -15,7 +16,7 @@ import javax.inject.Inject
 class GetCoinUseCase @Inject constructor(
     private val repository: CoinRepository
 ) {
-
+    // overrides invoke function that returns flow
     operator fun invoke(coinId: String) : Flow<Resource<CoinDetail>> = flow {
         try {
             emit(Resource.Loading())
